@@ -12,10 +12,6 @@ class Person < ActiveRecord::Base
     all
   end
 
-  def self.without_employees
-    all
-  end
-
   def self.with_employees_order_by_location_name
     all
   end

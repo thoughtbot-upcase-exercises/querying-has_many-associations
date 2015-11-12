@@ -41,20 +41,6 @@ describe Person do
     end
   end
 
-  describe ".without_employees" do
-    it "finds people who don't manage any employees" do
-      pending "Fix this spec third"
-
-      manager = create(:person, name: "manager")
-      create(:person, manager: manager, name: "employee-one")
-      create(:person, manager: manager, name: "employee-two")
-
-      result = Person.without_employees
-
-      expect(result.map(&:name)).to match_array(%w(employee-one employee-two))
-    end
-  end
-
   describe ".with_employees_order_by_location_name" do
     it "finds managers ordered by location name" do
       pending "Fix this spec last"
