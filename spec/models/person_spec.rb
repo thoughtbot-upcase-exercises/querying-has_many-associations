@@ -11,13 +11,15 @@ describe Person do
         create(:location, name: "location2")
       ]
       locations.each do |location|
-        create(:person, location: location, name: "at-#{location.name}")
+        create(:person, location: location)
       end
 
       result = Person.order_by_location_name
 
-      expect(result.map(&:name)).
-        to eq(%w(at-location1 at-location2 at-location3))
+      result.each_with_index do |person, index|
+        expect(person.location.name).
+          to eq Location.order(:name).map(&:name).at(index)
+      end
     end
   end
 
